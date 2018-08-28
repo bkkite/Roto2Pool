@@ -1,6 +1,6 @@
 {
-    "coin": "turtlecoin",
-    "symbol": "TRTL",
+    "coin": "Roto2coin",
+    "symbol": "ROTO2",
     "coinUnits": 100,
     "coinDifficultyTarget": 30,
 
@@ -19,7 +19,7 @@
   "poolServer": {
     "enabled": true,
     "clusterForks": "auto",
-    "poolAddress": "TRTLv3mnq2wS6GepH6nb628jEjFseeojACYToJ1BXaZNNEvLkzW327zTVCh7ncGtS2MU2usGNq9ygVwiCTTft9QkN3t5P2Xqv3f",
+    "poolAddress": "Rto2a4U38TQNHSV333GyTwKkbCpvf13hw7mfx5p4kT45KALs6CgpFa1ZTgQX73KRRKfQhJZb2zycjTR3XXLifBPQ1cz49YwQR8",
     "blockRefreshInterval": 1000,
     "minerTimeout": 3600,
     "ports": [
@@ -92,9 +92,9 @@
         "interval": 120,
         "maxAddresses": 50,
         "mixin": 7,
-        "transferFee": 100,
-        "minPayment": 100000,
-        "maxTransactionAmount": 0,
+        "transferFee": 2,
+        "minPayment": 10,
+        "maxTransactionAmount": 1000,
         "denomination": 100
     },
 
@@ -116,18 +116,18 @@
         "port": 8117,
         "blocks": 30,
         "payments": 30,
-        "password": "your_password"
+        "password": "test"
     },
 
     "daemon": {
         "host": "127.0.0.1",
-        "port": 11898
+        "port": 13000
     },
 
     "wallet": {
         "host": "127.0.0.1",
-        "port": 8070,
-        "password": "<replace with rpc password>"
+        "port": 13300,
+        "password": "test"
     },
 
     "redis": {
