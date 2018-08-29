@@ -1,8 +1,8 @@
-var api = 'http://167.99.80.204:8117'
+var api = 'http://pool.roto2coin.me/api'
 
 var api_blockexplorer = 'http://daemonhost.com:1118'
 
-var poolHost = '167.99.80.204'
+var poolHost = 'pool.roto2coin.me'
 
 var irc = 'irc.freenode.net/#poolhost'
 
