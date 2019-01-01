@@ -1,8 +1,8 @@
-var api = 'http://pool.bktrad.com/api'
+var api = 'https://bktrad.com/pool/api'
 
-var api_blockexplorer = 'http://daemonhost.com:1118'
+var api_blockexplorer = 'https://daemonhost.com:1118'
 
-var poolHost = 'pool.bktrad.com'
+var poolHost = 'bktrad.com/pool'
 
 var irc = 'irc.freenode.net/#poolhost'
 
