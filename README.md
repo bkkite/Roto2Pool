@@ -1,12 +1,19 @@
-turtle-pool (for nodejs 10.x)
+![image](https://user-images.githubusercontent.com/34389545/35821974-62e0e25c-0a70-11e8-87dd-2cfffeb6ed47.png)
+
+#### Master Build Status
+[![Build Status](https://travis-ci.org/turtlecoin/node-turtle-pool.svg?branch=master)](https://travis-ci.org/turtlecoin/node-turtle-pool)
+
+#### Development Build Status
+[![Build Status](https://travis-ci.org/turtlecoin/node-turtle-pool.svg?branch=development)](https://travis-ci.org/turtlecoin/node-turtle-pool)
+
+
+turtle-pool (for NodeJS LTS)
 ====================
 Formerly known as cryptonote-forknote-pool, forked from Forknote Project.
 
 High performance Node.js (with native C addons) mining pool for Cryptonote based coins, created with the Forknote software such as Bytecoin, Dashcoin, etc..
 
 Comes with lightweight example front-end script which uses the pool's AJAX API.
-
-
 
 #### Table of Contents
 * [Features](#features)
@@ -78,6 +85,7 @@ Comes with lightweight example front-end script which uses the pool's AJAX API.
 * [CryptoNote Forum](https://forum.cryptonote.org/)
 * [CryptoNote Universal Pool Forum](https://bitcointalk.org/index.php?topic=705509)
 * [Forknote](https://forknote.net)
+* [TurtleCoin](http://chat.turtlecoin.lol)
 
 #### Pools Using This Software
 
@@ -89,37 +97,66 @@ Usage
 
 #### Requirements
 * Turtlecoind daemon
-* walletd
-* [Node.js](http://nodejs.org/) v10.x+ ([follow these installation instructions](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions))
+* turtle-service
+* [Node.js](http://nodejs.org/) LTS (6,8,10) ([follow these installation instructions](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions))
 * [Redis](http://redis.io/) key-value store v2.6+ ([follow these instructions](http://redis.io/topics/quickstart))
 * libssl required for the node-multi-hashing module
-  * For Ubuntu: `sudo apt-get install libssl-dev`
+  * For Ubuntu: `sudo apt-get install -y libssl-dev`
 
+##### Windows Support
+
+You will need the windows build tools to install this module (and many more) on windows. Run the following command to set up your environment.
+
+```bash
+npm install -g windows-build-tools --vs2015
+```
 
 ##### Seriously
 Those are legitimate requirements. If you use old versions of Node.js or Redis that may come with your system package manager then you will have problems. Follow the linked instructions to get the last stable versions.
-
 
 [**Redis security warning**](http://redis.io/topics/security): be sure firewall access to redis - an easy way is to
 include `bind 127.0.0.1` in your `redis.conf` file. Also it's a good idea to learn about and understand software that
 you are using - a good place to start with redis is [data persistence](http://redis.io/topics/persistence).
 
 ##### Easy install on Ubuntu 14 LTS
+
 Installing pool on different Linux distributives is different because it depends on system default components and versions. For now the easiest way to install pool is to use Ubuntu 14 LTS. Thus, all you had to do in order to prepare Ubunty 14 for pool installation is to run:
 
 ```bash
-sudo apt-get install git build-essential redis-server libboost1.55-all-dev cmake libssl-dev node-gyp
+sudo apt-get install -y git build-essential redis-server libboost1.55-all-dev cmake libssl-dev node-gyp
 ```
 
+##### Debian 9 installation
+These are the steps taken to install pool on Debian 9.  These steps will also work on Ubuntu 16 & 18:
+
+```bash
+sudo apt-get install -y git curl wget screen build-essential redis-server libboost-all-dev cmake libssl-dev node-gyp
+```
+I have currently tested this on Node 8.11.1 and 8.12.0.
+
+You can install node here: (https://nodejs.org/en/download/package-manager/)
+
+Or directly from a terminal:
+
+```bash
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+I have found using a screen session to keep everything running on the server works well.
+
+Grab your most recent TurtleCoin release (https://github.com/turtlecoin/turtlecoin/releases/) then launch your daemon and sync your chain.
+
+Once your daemon is synced with the network start your turtle-service and redis-server.
 
 #### 1) Downloading & Installing
 
-Clone the repository and run `npm update` for all the dependencies to be installed:
+Clone the repository and run `npm install` for all the dependencies to be installed:
 
 ```bash
-git clone https://github.com/turtlecoin/turtle-pool pool
-cd pool
-npm update
+git clone https://github.com/turtlecoin/turtle-pool turtle-pool
+cd turtle-pool
+npm install && npm test
 ```
 
 #### 2) Configuration
@@ -261,7 +298,6 @@ Explanation for each field:
     "enabled": true,
     "interval": 600, //how often to run in seconds
     "maxAddresses": 50, //split up payments if sending to more than this many addresses
-    "mixin": 3, //number of transactions yours is indistinguishable from
     "transferFee": 5000000000, //fee to pay for each transaction
     "minPayment": 100000000000, //miner balance required before sending payment
     "maxTransactionAmount": 0, //split transactions by this amount(to prevent "too big transaction" error)
@@ -519,12 +555,19 @@ enable-cors=*
 ```
 
 * Launch forknoted with the corresponding config file
-* Change the following line in the pool's frontend config.json:
+* Change the following line in the pool's frontend config.js:
 
 ```
 var api_blockexplorer = "http://daemonhost.com:1118";
 ```
 
+* Finally, edit these variables in the pool's frontend config.js using this syntax:
+
+```
+var blockchainExplorer = 'http://poolhost/?hash={id}#blockchain_block'
+
+var transactionExplorer = 'http://poolhost/?hash={id}#blockchain_transaction'
+```
 
 Credits
 ===
@@ -535,6 +578,7 @@ Credits
 * [Wolf0](https://bitcointalk.org/index.php?action=profile;u=80740) - Helped try to deobfuscate some of the daemon code for getting a bug fixed
 * [Tacotime](https://bitcointalk.org/index.php?action=profile;u=19270) - helping with figuring out certain problems and lead the bounty for this project's creation
 * [fancoder](https://github.com/fancoder/) - See his repo for the changes
+* [TurtleCoin](https://github.com/turtlecoin/) - For making this great again
 
 License
 -------
