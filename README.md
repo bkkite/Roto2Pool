@@ -100,8 +100,10 @@ Usage
 * turtle-service
 * [Node.js](http://nodejs.org/) LTS (6,8,10) ([follow these installation instructions](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions))
 * [Redis](http://redis.io/) key-value store v2.6+ ([follow these instructions](http://redis.io/topics/quickstart))
-* libssl required for the node-multi-hashing module
+* [Important]libssl required for the node-multi-hashing module
   * For Ubuntu: `sudo apt-get install -y libssl-dev`
+* [Important]Boost is required for the cryptonote-util module
+  * For Ubuntu: sudo apt-get install libboost-all-dev
 
 ##### Windows Support
 
