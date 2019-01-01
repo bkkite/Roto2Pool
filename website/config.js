@@ -1,12 +1,12 @@
-var api = 'http://pool.roto2coin.me/api'
+var api = 'http://pool.bktrad.com/api'
 
 var api_blockexplorer = 'http://daemonhost.com:1118'
 
-var poolHost = 'pool.roto2coin.me'
+var poolHost = 'pool.bktrad.com'
 
 var irc = 'irc.freenode.net/#poolhost'
 
-var email = 'support@poolhost.com'
+var email = 'bktrad.service@bktrad.com'
 
 var cryptonatorWidget = ['{symbol}-BTC', '{symbol}-USD', '{symbol}-EUR']
 
