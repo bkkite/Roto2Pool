@@ -1,8 +1,8 @@
-var api = 'https://bktrad.com/pool/api'
+var api = 'https://www.bktrad.com/pool/api'
 
-var api_blockexplorer = 'https://daemonhost.com:1118'
+var api_blockexplorer = 'http://blocks.roto2coin.cf/'
 
-var poolHost = 'bktrad.com/pool'
+var poolHost = 'www.bktrad.com/pool/'
 
 var irc = 'irc.freenode.net/#poolhost'
 
